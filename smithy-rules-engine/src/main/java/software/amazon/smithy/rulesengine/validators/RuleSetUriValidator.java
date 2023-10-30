@@ -95,7 +95,8 @@ public final class RuleSetUriValidator extends AbstractValidator {
                     if (!(scheme.startsWith("http://") || scheme.startsWith("https://"))) {
                         return Optional.of(error(serviceShape, template,
                                 "URI should start with `http://` or `https://` but the URI started with "
-                                        + scheme));
+                                        + scheme,
+                                scheme.endsWith(".") ? scheme.substring(0, scheme.length() - 1) : scheme));
                     }
                 }
                 // Allow dynamic URIs for now — we should lint that at looks like a scheme at some point
